@@ -1,16 +1,52 @@
-# React + Vite
+# 🏥 CampusCare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **A student clinic appointment booking app built with React and Vite.**
 
-Currently, two official plugins are available:
+CampusCare provides students with a simple way to browse doctors, find available appointment slots, and book a clinic appointment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🩺 **Browse Doctors** — View available doctors at the campus clinic.
+- 🔎 **Filter by Department** — Find doctors by their department or specialization.
+- 👨‍⚕️ **Doctor Profiles** — View detailed information about each doctor.
+- 📅 **Appointment Slots** — Choose from available appointment dates and times.
+- 📝 **Validated Booking Form** — Submit appointment information with form validation.
+- ✅ **Booking Confirmation** — Receive confirmation after successfully booking an appointment.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- ⚛️ **React**
+- ⚡ **Vite**
+- 🟨 **JavaScript**
+- 🎨 **CSS**
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Yabsira21/campus-care.git
+cd CampusCare
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Vite will provide a local development URL in the terminal.
+
+---
