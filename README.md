@@ -50,3 +50,21 @@ npm run dev
 Vite will provide a local development URL in the terminal.
 
 ---
+
+## 🔄 Booking Flow
+
+```text
+Browse Doctors
+      ↓
+Filter by Department
+      ↓
+View Doctor Profile
+      ↓
+Choose Appointment Slot
+      ↓
+Complete Booking Form
+      ↓
+Submit Booking
+      ↓
+Confirmation
+```
