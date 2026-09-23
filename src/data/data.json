@@ -1,0 +1,62 @@
+[
+  {
+    "id": "d1",
+    "name": "Dr. Amara Bekele",
+    "initials": "AB",
+    "color": "#ee5586",
+    "department": "General Medicine",
+    "tags": ["Walk-in", "Day shift"],
+    "experience": "6+ years",
+    "rating": 4.9,
+    "status": "available",
+    "image": "https://i.pravatar.cc/300"
+  },
+  {
+    "id": "d2",
+    "name": "Dr. Samuel Tesfaye",
+    "initials": "ST",
+    "color": "#2fc7c0",
+    "department": "Dermatology",
+    "tags": ["By appointment"],
+    "experience": "4+ years",
+    "rating": 4.7,
+    "status": "available",
+    "image": "https://i.pravatar.cc/300"
+  },
+  {
+    "id": "d3",
+    "name": "Dr. Hana Girma",
+    "initials": "HG",
+    "color": "#8c6fe6",
+    "department": "Mental Health",
+    "tags": ["Telehealth", "Day shift"],
+    "experience": "8+ years",
+    "rating": 5.0,
+    "status": "busy",
+    "image": "https://i.pravatar.cc/300"
+  },
+  {
+    "id": "d4",
+    "name": "Dr. Yosef Alemu",
+    "initials": "YA",
+    "color": "#f2a154",
+    "department": "Dental Care",
+    "tags": ["Walk-in"],
+    "experience": "3+ years",
+    "rating": 4.6,
+    "status": "available",
+    "image": "https://i.pravatar.cc/300"
+  },
+  {
+    "id": "d5",
+    "name": "Dr. Selam Worku",
+    "initials": "SW",
+    "color": "#4fb0e8",
+    "department": "Physiotherapy",
+    "tags": ["By appointment"],
+    "experience": "5+ years",
+    "rating": 4.8,
+    "status": "busy",
+    "image": "https://i.pravatar.cc/300"
+  }
+]

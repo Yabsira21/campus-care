@@ -1,36 +1,202 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
-import { doctors } from "../data/doctors";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import "./DoctorList.css";
 
 export default function DoctorList() {
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("all");
-  const [onlyAvailable, setOnlyAvailable] = useState(false);
-  const [minRating, setMinRating] = useState(0);
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const departments = ["a", "b"];
 
-  const departments = useMemo(
-    () => ["all", ...new Set(doctors.map((d) => d.department))],
-    [],
-  );
+  useEffect(() => {
+    // const ctrl = new AbortController();
+    async function load() {
+      try {
+        setLoading(true);
+        const res = await fetch("/src/data/data.json", {
+          // signal: ctrl.signal,
+        });
+        if (!res.ok) throw new Error("Could not load the menu");
+        setDoctors(await res.json());
+      } catch (e) {
+        setError(e.message);
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    setTimeout(() => {
+      load();
+    }, 3000);
+  }, []);
 
-  const filtered = useMemo(() => {
-    return doctors.filter((d) => {
-      if (search && !d.name.toLowerCase().includes(search.toLowerCase()))
-        return false;
-      if (department !== "all" && d.department !== department) return false;
-      if (onlyAvailable && d.status !== "available") return false;
-      if (minRating && d.rating < minRating) return false;
-      return true;
-    });
-  }, [search, department, onlyAvailable, minRating]);
+  if (loading)
+    return (
+      <>
+        <section className="doctors-hero">
+          <div className="doctors-hero-decoration deco-circle" />
+          <div className="doctors-hero-decoration deco-square" />
+          <div className="doctors-hero-decoration deco-circle-two" />
+
+          <div className="container centered">
+            <span className="eyebrow">FIND A DOCTOR</span>
+            <h1>
+              Browse campus doctors and
+              <br />
+              book a visit in <span>minutes</span>
+            </h1>
+            <p>
+              Filter by department, check who's free today and pick a time that
+              fits your schedule.
+            </p>
+
+            <div className="search-card">
+              <input
+                type="text"
+                placeholder="Search by doctor name"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+
+              <button type="button" className="search-button">
+                Search
+              </button>
+            </div>
+          </div>
+        </section>
+        <section className="section doctors-body skeleton-body">
+          <div className="container doctors-layout">
+            {/* Filter skeleton */}
+            <aside className="filters-card skeleton-filter">
+              <Skeleton
+                width={75}
+                height={20}
+                baseColor="#eeeeef"
+                highlightColor="#f8f8f9"
+              />
+
+              <div className="skeleton-filter-group">
+                <Skeleton
+                  width={90}
+                  height={14}
+                  baseColor="#eeeeef"
+                  highlightColor="#f8f8f9"
+                />
+
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div className="skeleton-filter-item" key={i}>
+                    <Skeleton
+                      circle
+                      width={15}
+                      height={15}
+                      baseColor="#eeeeef"
+                      highlightColor="#f8f8f9"
+                    />
+
+                    <Skeleton
+                      width={80 + i * 8}
+                      height={13}
+                      baseColor="#eeeeef"
+                      highlightColor="#f8f8f9"
+                    />
+                  </div>
+                ))}
+              </div>
+            </aside>
+
+            {/* Doctor cards */}
+            <div className="doctors-list">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div className="doctor-card doctor-skeleton" key={i}>
+                  {/* Doctor photo */}
+                  <Skeleton
+                    width={130}
+                    height={165}
+                    borderRadius={10}
+                    baseColor="#eeeeef"
+                    highlightColor="#f8f8f9"
+                  />
+
+                  {/* Doctor information */}
+                  <div className="doctor-content">
+                    {/* Name */}
+                    <div className="skeleton-doctor-header">
+                      <Skeleton
+                        width={145}
+                        height={19}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+
+                      <Skeleton
+                        width={48}
+                        height={20}
+                        borderRadius={20}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+                    </div>
+
+                    {/* Department */}
+                    <div className="skeleton-meta">
+                      <Skeleton
+                        width={100}
+                        height={13}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+                    </div>
+
+                    {/* Description */}
+                    <div className="skeleton-description">
+                      <Skeleton
+                        width="92%"
+                        height={12}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+
+                      <Skeleton
+                        width="78%"
+                        height={12}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+
+                      <Skeleton
+                        width="55%"
+                        height={12}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+                    </div>
+
+                    {/* Button */}
+                    <div className="skeleton-actions">
+                      <Skeleton
+                        width={115}
+                        height={36}
+                        borderRadius={7}
+                        baseColor="#eeeeef"
+                        highlightColor="#f8f8f9"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  if (error) return <p className="err mt-2">Something went wrong!</p>;
 
   return (
     <>
-      {/* <Navbar /> */}
-
       <section className="doctors-hero">
         <div className="doctors-hero-decoration deco-circle" />
         <div className="doctors-hero-decoration deco-square" />
@@ -96,12 +262,12 @@ export default function DoctorList() {
           </aside>
 
           <div className="doctors-list">
-            {filtered.length === 0 ? (
+            {doctors.length === 0 ? (
               <div className="empty-state">
                 No doctors match those filters. Try clearing a filter above.
               </div>
             ) : (
-              filtered.map((doctor) => (
+              doctors.map((doctor) => (
                 <div key={doctor.id} className="doctor-card">
                   <div
                     className="doctor-photo"

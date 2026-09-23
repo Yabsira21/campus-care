@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 // import Navbar from '../components/Navbar';
 // import Footer from '../components/Footer';
-import { doctors } from "../data/doctors";
+// import { doctors } from "../data/doctors";
 import "./Checkout.css";
 
 // Static example — the real page will use the doctor/date/time chosen
 // on the previous screen.
-const doctor = doctors[0];
+const doctor = {};
 
 export default function Checkout() {
   return (

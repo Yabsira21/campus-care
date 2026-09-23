@@ -251,3 +251,81 @@ svg {
     padding: 56px 0;
   }
 }
+
+/* =========================================================
+   DOCTOR LIST SKELETON
+========================================================= */
+
+.skeleton-body {
+  margin-top: -60px;
+}
+
+.doctor-skeleton {
+  cursor: default;
+}
+
+.doctor-skeleton:hover {
+  transform: none;
+  box-shadow: 0 8px 25px rgba(35, 37, 45, 0.06);
+}
+
+/* =========================================================
+   FILTER SKELETON
+========================================================= */
+
+.skeleton-filter-group {
+  margin-top: 25px;
+}
+
+.skeleton-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-top: 15px;
+}
+
+/* =========================================================
+   DOCTOR HEADER SKELETON
+========================================================= */
+
+.skeleton-doctor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 20px;
+}
+
+/* =========================================================
+   META SKELETON
+========================================================= */
+
+.skeleton-meta {
+  margin-top: 14px;
+}
+
+/* =========================================================
+   DESCRIPTION SKELETON
+========================================================= */
+
+.skeleton-description {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  margin-top: 15px;
+
+  max-width: 580px;
+}
+
+/* =========================================================
+   BUTTON SKELETON
+========================================================= */
+
+.skeleton-actions {
+  margin-top: auto;
+  padding-top: 14px;
+}

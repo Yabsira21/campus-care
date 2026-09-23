@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { doctors } from "../data/doctors";
+// import { doctors } from "../data/doctors";
 import "./DoctorDetail.css";
 
 // Presentational only
-const doctor = doctors[0];
+// const doctor = doctors[0];
 
+const doctor = {};
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 const timeSlots = [
