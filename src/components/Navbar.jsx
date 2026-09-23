@@ -2,9 +2,12 @@ import { useState } from "react";
 import "./Navbar.css";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const isLoggedin = useAuth((s) => s.isLoggedIn);
+  const username = useAuth((s) => s.name);
 
   return (
     <header className="navbar">
@@ -34,9 +37,19 @@ export default function Navbar() {
 
         <div className="nav-actions">
           <p className="signup-link hidden">Sign up</p>
-          <Link to={"/login"} className="login-button">
-            Login
-          </Link>
+          {isLoggedin ? (
+            <div
+              className="user-avatar"
+              title={username}
+              aria-label={`Logged in as ${username}`}
+            >
+              {username?.charAt(0).toUpperCase()}
+            </div>
+          ) : (
+            <Link to={"/login"} className="login-button">
+              Login
+            </Link>
+          )}
         </div>
 
         <button

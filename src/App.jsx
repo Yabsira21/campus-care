@@ -7,9 +7,12 @@ import Checkout from "./pages/Checkout";
 import Layout from "./pages/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RequireAuth from "./components/RequireAuth";
+import { useAuth } from "./store/auth";
 // import Last from "./components/Last";
 
 export default function App() {
+  const isLoggedin = useAuth((s) => s.isLoggedIn);
   return (
     <>
       <Routes>
@@ -18,7 +21,14 @@ export default function App() {
           <Route path="/doctorlist" element={<DoctorList />} />
           <Route path="/doctor/:id" element={<DoctorDetail />} />
         </Route>
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth isLoggedIn={isLoggedin}>
+              <Checkout />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
       <ToastContainer

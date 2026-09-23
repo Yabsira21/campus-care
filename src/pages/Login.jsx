@@ -1,12 +1,18 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Login.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Login.css";
+import { useAuth } from "../store/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [name, setName] = useState('');
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const login = useAuth((s) => s.login);
 
   function handleSubmit(e) {
     e.preventDefault();
+    login(name);
+    navigate("/");
     // Presentational only — wire this up to real auth later.
   }
 
@@ -34,8 +40,7 @@ export default function Login() {
         <div className="login-illustration-text">
           <h2>
             Your campus clinic,
-            <br />
-            a couple of taps away.
+            <br />a couple of taps away.
           </h2>
           <p>Book visits, track appointments and message your doctor.</p>
         </div>
@@ -45,7 +50,9 @@ export default function Login() {
         <form className="login-form" onSubmit={handleSubmit}>
           <span className="eyebrow">WELCOME BACK</span>
           <h1>Sign in</h1>
-          <p className="login-subtext">Enter your name to continue to your account.</p>
+          <p className="login-subtext">
+            Enter your name to continue to your account.
+          </p>
 
           <label className="form-field">
             <span>Full name</span>
@@ -57,7 +64,9 @@ export default function Login() {
             />
           </label>
 
-          <button type="submit" className="btn btn-primary btn-block">Login</button>
+          <button type="submit" className="btn btn-primary btn-block">
+            Login
+          </button>
         </form>
       </div>
     </div>
