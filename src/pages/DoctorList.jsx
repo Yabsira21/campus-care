@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./DoctorList.css";
+import { useSearchParams } from "react-router-dom";
 
 export default function DoctorList() {
-  const [search, setSearch] = useState("");
-  const [department, setDepartment] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const dep = searchParams.get("department") || "all";
+  const searchTerm = searchParams.get("search") || "";
+  const [search, setSearch] = useState(searchTerm);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,6 +36,13 @@ export default function DoctorList() {
       load();
     }, 3000);
   }, []);
+
+  const shown =
+    dep == "all" ? doctors : doctors.filter((d) => d.department === dep);
+
+  const shownWithSearchterm = shown.filter((doctor) =>
+    doctor.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   if (loading)
     return (
@@ -62,7 +72,17 @@ export default function DoctorList() {
                 onChange={(e) => setSearch(e.target.value)}
               />
 
-              <button type="button" className="search-button">
+              <button
+                type="button"
+                className="search-button"
+                onClick={() => {
+                  console.log("Hi");
+                  setSearchParams({
+                    department: dep,
+                    search: search,
+                  });
+                }}
+              >
                 Search
               </button>
             </div>
@@ -222,7 +242,16 @@ export default function DoctorList() {
               onChange={(e) => setSearch(e.target.value)}
             />
 
-            <button type="button" className="search-button">
+            <button
+              type="button"
+              className="search-button"
+              onClick={() => {
+                setSearchParams({
+                  department: dep,
+                  search: search,
+                });
+              }}
+            >
               Search
             </button>
           </div>
@@ -238,23 +267,23 @@ export default function DoctorList() {
               <span className="filter-label">Department</span>
               {departments
                 .filter((d) => d !== "all")
-                .map((dep) => (
-                  <label key={dep} className="filter-check">
+                .map((dept) => (
+                  <label key={dept} className="filter-check">
                     <input
                       type="radio"
                       name="department"
-                      checked={department === dep}
-                      onChange={() => setDepartment(dep)}
+                      checked={dep === dept}
+                      onChange={() => setSearchParams({ department: dept })}
                     />
-                    {dep}
+                    {dept}
                   </label>
                 ))}
               <label className="filter-check">
                 <input
                   type="radio"
                   name="department"
-                  checked={department === "all"}
-                  onChange={() => setDepartment("all")}
+                  checked={dep === "all"}
+                  onChange={() => setSearchParams({ department: "all" })}
                 />
                 All departments
               </label>
@@ -262,12 +291,12 @@ export default function DoctorList() {
           </aside>
 
           <div className="doctors-list">
-            {doctors.length === 0 ? (
+            {shownWithSearchterm.length === 0 ? (
               <div className="empty-state">
                 No doctors match those filters. Try clearing a filter above.
               </div>
             ) : (
-              doctors.map((doctor) => (
+              shownWithSearchterm.map((doctor) => (
                 <div key={doctor.id} className="doctor-card">
                   <div
                     className="doctor-photo"
