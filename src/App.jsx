@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Last from "./components/Last";
-import DoctorList from "./components/DoctorList";
-import DoctorDetail from "./components/DoctorDetail";
-import Login from "./components/Login";
-import Checkout from "./components/Checkout";
+import Last from "./pages/Last";
+import DoctorList from "./pages/DoctorList";
+import DoctorDetail from "./pages/DoctorDetail";
+import Login from "./pages/Login";
+import Checkout from "./pages/Checkout";
 // import Last from "./components/Last";
 
 export default function App() {
