@@ -358,7 +358,9 @@
   font-size: 14px;
   font-weight: 600;
 
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .btn-primary {
@@ -376,6 +378,126 @@
 
 .btn-block {
   width: 100%;
+}
+
+.date-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.date-pill {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--muted);
+
+  padding: 10px 8px;
+
+  border-radius: 9px;
+
+  font-family: var(--body-font);
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.date-pill:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.date-pill-active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: white;
+
+  box-shadow: 0 5px 15px rgba(232, 92, 174, 0.2);
+}
+
+.date-pill-active:hover,
+.slot-active:hover {
+  color: white;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+
+  margin-bottom: 20px;
+}
+
+.slot {
+  border: 1px solid var(--border);
+  background: #fff;
+
+  color: var(--muted);
+
+  padding: 10px;
+
+  border-radius: 8px;
+
+  font-family: var(--body-font);
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.slot:hover {
+  border-color: var(--pink);
+  /* color: var(--pink); */
+}
+
+.slot-active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: white;
+
+  box-shadow: 0 5px 15px rgba(232, 92, 174, 0.2);
+}
+
+/* Selected appointment information */
+
+.booking-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 12px 14px;
+
+  margin-bottom: 14px;
+
+  border-radius: 9px;
+
+  background: var(--pink-light);
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+.booking-summary strong {
+  color: var(--pink-dark);
+}
+
+/* Disabled continue button */
+
+.btn-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: auto;
+}
+
+.btn-disabled:hover {
+  transform: none;
+  background: var(--pink);
 }
 
 /* =========================================================

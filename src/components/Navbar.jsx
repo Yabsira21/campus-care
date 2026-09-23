@@ -34,9 +34,9 @@ export default function Navbar() {
 
         <div className="nav-actions">
           <p className="signup-link hidden">Sign up</p>
-          <a href="#login" className="login-button">
+          <Link to={"/login"} className="login-button">
             Login
-          </a>
+          </Link>
         </div>
 
         <button

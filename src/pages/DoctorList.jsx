@@ -56,17 +56,6 @@ export default function DoctorList() {
               onChange={(e) => setSearch(e.target.value)}
             />
 
-            {/* <select
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-            >
-              {departments.map((dep) => (
-                <option key={dep} value={dep}>
-                  {dep === "all" ? "All departments" : dep}
-                </option>
-              ))}
-            </select> */}
-
             <button type="button" className="search-button">
               Search
             </button>
@@ -104,51 +93,6 @@ export default function DoctorList() {
                 All departments
               </label>
             </div>
-
-            {/* <div className="filter-group">
-              <span className="filter-label">Availability</span>
-              <label className="filter-check">
-                <input
-                  type="checkbox"
-                  checked={onlyAvailable}
-                  onChange={(e) => setOnlyAvailable(e.target.checked)}
-                />
-                Available today only
-              </label>
-            </div> */}
-
-            {/* <div className="filter-group">
-              <span className="filter-label">Minimum rating</span>
-              <div className="rating-select">
-                {[4, 4.5, 4.8].map((r) => (
-                  <button
-                    key={r}
-                    type="button"
-                    className={
-                      minRating === r
-                        ? "rating-pill rating-pill-active"
-                        : "rating-pill"
-                    }
-                    onClick={() => setMinRating(minRating === r ? 0 : r)}
-                  >
-                    ★ {r}+
-                  </button>
-                ))}
-              </div>
-            </div> */}
-
-            {/* <button
-              type="button"
-              className="clear-link"
-              onClick={() => {
-                setSearch("");
-                setDepartment("all");
-                setOnlyAvailable(false);
-                setMinRating(0);
-              }}
-            >
-              Clear all filters
-            </button> */}
           </aside>
 
           <div className="doctors-list">
@@ -158,63 +102,52 @@ export default function DoctorList() {
               </div>
             ) : (
               filtered.map((doctor) => (
-                <div key={doctor.id} className="doctor-row">
+                <div key={doctor.id} className="doctor-card">
                   <div
-                    className="doctor-avatar"
-                    style={{ background: doctor.color }}
+                    className="doctor-photo"
+                    style={{
+                      background: doctor.color,
+                      backgroundImage: doctor.image
+                        ? `url(${doctor.image})`
+                        : undefined,
+                      backgroundSize: "cover",
+                    }}
                   >
-                    {doctor.initials}
+                    {!doctor.image && doctor.initials}
                   </div>
 
-                  <div className="doctor-info">
-                    <h4>{doctor.name}</h4>
-                    <p className="doctor-department">{doctor.department}</p>
-
-                    <div className="doctor-tags">
-                      <span className="rating">
-                        ★ {doctor.rating.toFixed(1)}
-                      </span>
-                      <span className="pill-tag">
-                        {doctor.experience} experience
-                      </span>
-                      {doctor.status === "available" ? (
-                        <span className="badge-available">
-                          <i /> Available today
-                        </span>
-                      ) : (
-                        <span className="badge-busy">Fully booked</span>
-                      )}
+                  <div className="doctor-content">
+                    <div className="doctor-header">
+                      <div className="doctor-name-row">
+                        <h4>{doctor.name}</h4>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="doctor-actions">
-                    <Link
-                      to={`/doctors/${doctor.id}`}
-                      className="btn btn-outline"
-                    >
-                      View profile
-                    </Link>
-                    <Link
-                      to={`/doctors/${doctor.id}`}
-                      className="btn btn-primary"
-                    >
-                      Book appointment
-                    </Link>
+                    <div className="doctor-meta">
+                      <span>👤 {doctor.department}</span>
+                    </div>
+
+                    <p className="doctor-description">
+                      {doctor.description ||
+                        "Experienced healthcare professional providing quality care and support to students."}
+                    </p>
+
+                    <div className="doctor-actions">
+                      <Link
+                        to={`/doctor/${doctor.id}`}
+                        className="doctor-profile-btn"
+                      >
+                        View profile
+                        <span>›</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))
             )}
-
-            {/* <div className="pagination">
-              <span className="page-dot page-dot-active">1</span>
-              <span className="page-dot">2</span>
-              <span className="page-dot">3</span>
-            </div> */}
           </div>
         </div>
       </section>
-
-      {/* <Footer /> */}
     </>
   );
 }
