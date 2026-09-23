@@ -13,9 +13,9 @@ export default function App() {
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Landing />} />
         <Route path="/doctorlist" element={<DoctorList />} />
+        <Route path="/doctor" element={<DoctorDetail />} />
       </Route>
       <Route path="/checkout" element={<Checkout />} />
-      <Route path="/doctor" element={<DoctorDetail />} />
       <Route path="/login" element={<Login />} />
     </Routes>
   );

@@ -43,14 +43,6 @@ export default function Checkout() {
                 <span>Time</span>
                 <span>9:30 AM</span>
               </div>
-              <div className="summary-line">
-                <span>Visit type</span>
-                <span>Walk-in</span>
-              </div>
-
-              <Link to={`/doctors/${doctor.id}`} className="summary-edit">
-                Change time or doctor <span>→</span>
-              </Link>
             </div>
 
             <div className="summary-note">
@@ -88,21 +80,11 @@ export default function Checkout() {
               </div>
 
               <label className="form-field">
-                <span>Reason for visit</span>
+                <span>Reason for visit (optional)</span>
                 <textarea
                   rows="4"
                   placeholder="Briefly describe what's going on"
                 ></textarea>
-              </label>
-
-              <label className="form-field">
-                <span>Insurance / clinic card number (optional)</span>
-                <input type="text" placeholder="Card number" />
-              </label>
-
-              <label className="form-checkbox">
-                <input type="checkbox" />
-                The information above is accurate to the best of my knowledge.
               </label>
 
               <button type="submit" className="btn btn-primary btn-block">
@@ -112,8 +94,6 @@ export default function Checkout() {
           </div>
         </div>
       </section>
-
-      {/* <Footer /> */}
     </>
   );
 }

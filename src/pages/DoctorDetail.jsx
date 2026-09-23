@@ -19,8 +19,6 @@ const timeSlots = [
 export default function DoctorDetail() {
   return (
     <>
-      {/* <Navbar /> */}
-
       <section className="detail-hero">
         <div className="detail-hero-decoration deco-circle" />
         <div className="detail-hero-decoration deco-square" />
@@ -76,14 +74,6 @@ export default function DoctorDetail() {
                   Residency, St. Paul's Hospital Millennium Medical College
                 </li>
               </ul>
-            </div>
-
-            <div className="detail-card">
-              <h3>Languages</h3>
-              <div className="detail-tags">
-                <span className="pill-tag">Amharic</span>
-                <span className="pill-tag">English</span>
-              </div>
             </div>
           </div>
 
