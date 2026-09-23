@@ -1,4 +1,5 @@
 import "./Checkout.css";
+import confetti from "canvas-confetti";
 
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -103,7 +104,15 @@ export default function Checkout() {
         ...form,
       });
 
-      navigate("/thank-you");
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 },
+      });
+
+      toast.success("Appointment booked successfully!");
+
+      navigate("/");
     } catch (error) {
       console.error(error);
     } finally {
