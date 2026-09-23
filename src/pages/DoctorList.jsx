@@ -213,7 +213,29 @@ export default function DoctorList() {
         </section>
       </>
     );
-  if (error) return <p className="err mt-2">Something went wrong!</p>;
+  if (error) {
+    return (
+      <section className="error-page">
+        <div className="error-card">
+          <div className="error-icon">!</div>
+
+          <h2>We couldn't load the doctors</h2>
+
+          <p>
+            Something went wrong while loading the doctor list. Please try
+            again.
+          </p>
+
+          <button
+            className="error-retry"
+            onClick={() => window.location.reload()}
+          >
+            Try again
+          </button>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
