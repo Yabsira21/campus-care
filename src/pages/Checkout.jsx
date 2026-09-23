@@ -1,14 +1,25 @@
-import { Link } from "react-router-dom";
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
-// import { doctors } from "../data/doctors";
 import "./Checkout.css";
-
-// Static example — the real page will use the doctor/date/time chosen
-// on the previous screen.
-const doctor = {};
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Checkout() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { doctor, selectedDay, selectedTime } = location.state || {};
+
+  useEffect(() => {
+    if (!doctor || !selectedDay || !selectedTime) {
+      toast.info("Please select a doctor and appointment time first.");
+
+      navigate("/");
+    }
+  }, [doctor, selectedDay, selectedTime, navigate]);
+
+  if (!doctor || !selectedDay || !selectedTime) {
+    return null;
+  }
   return (
     <>
       {/* <Navbar /> */}
@@ -37,11 +48,12 @@ export default function Checkout() {
 
               <div className="summary-line">
                 <span>Date</span>
-                <span>Mon, 22 Sep</span>
+                <span>{selectedDay}</span>
               </div>
+
               <div className="summary-line">
                 <span>Time</span>
-                <span>9:30 AM</span>
+                <span>{selectedTime}</span>
               </div>
             </div>
 

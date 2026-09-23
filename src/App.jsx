@@ -5,18 +5,28 @@ import DoctorDetail from "./pages/DoctorDetail";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
 import Layout from "./pages/Layout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import Last from "./components/Last";
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Landing />} />
-        <Route path="/doctorlist" element={<DoctorList />} />
-        <Route path="/doctor/:id" element={<DoctorDetail />} />
-      </Route>
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index path="/" element={<Landing />} />
+          <Route path="/doctorlist" element={<DoctorList />} />
+          <Route path="/doctor/:id" element={<DoctorDetail />} />
+        </Route>
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <ToastContainer
+        position="top-center"
+        hideProgressBar
+        theme="dark"
+        // transition={Slide}
+      />
+    </>
   );
 }

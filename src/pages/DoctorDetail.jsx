@@ -243,6 +243,11 @@ export default function DoctorDetail() {
             {/* CONTINUE */}
             <Link
               to="/checkout"
+              state={{
+                doctor,
+                selectedDay,
+                selectedTime,
+              }}
               className={`btn btn-primary btn-block ${
                 !selectedDay || !selectedTime ? "btn-disabled" : ""
               }`}
