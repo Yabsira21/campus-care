@@ -56,7 +56,7 @@ export default function DoctorList() {
               onChange={(e) => setSearch(e.target.value)}
             />
 
-            <select
+            {/* <select
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
             >
@@ -65,7 +65,7 @@ export default function DoctorList() {
                   {dep === "all" ? "All departments" : dep}
                 </option>
               ))}
-            </select>
+            </select> */}
 
             <button type="button" className="search-button">
               Search
@@ -105,7 +105,7 @@ export default function DoctorList() {
               </label>
             </div>
 
-            <div className="filter-group">
+            {/* <div className="filter-group">
               <span className="filter-label">Availability</span>
               <label className="filter-check">
                 <input
@@ -115,9 +115,9 @@ export default function DoctorList() {
                 />
                 Available today only
               </label>
-            </div>
+            </div> */}
 
-            <div className="filter-group">
+            {/* <div className="filter-group">
               <span className="filter-label">Minimum rating</span>
               <div className="rating-select">
                 {[4, 4.5, 4.8].map((r) => (
@@ -135,9 +135,9 @@ export default function DoctorList() {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
-            <button
+            {/* <button
               type="button"
               className="clear-link"
               onClick={() => {
@@ -148,16 +148,10 @@ export default function DoctorList() {
               }}
             >
               Clear all filters
-            </button>
+            </button> */}
           </aside>
 
           <div className="doctors-list">
-            <div className="list-header">
-              <span>
-                Showing {filtered.length} of {doctors.length} doctors
-              </span>
-            </div>
-
             {filtered.length === 0 ? (
               <div className="empty-state">
                 No doctors match those filters. Try clearing a filter above.
@@ -211,11 +205,11 @@ export default function DoctorList() {
               ))
             )}
 
-            <div className="pagination">
+            {/* <div className="pagination">
               <span className="page-dot page-dot-active">1</span>
               <span className="page-dot">2</span>
               <span className="page-dot">3</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
