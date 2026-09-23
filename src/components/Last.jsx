@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./Last.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const nurses = [
   {
@@ -72,48 +73,48 @@ function FloatingPerson({ person }) {
   );
 }
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+// function Navbar() {
+//   const [menuOpen, setMenuOpen] = useState(false);
 
-  return (
-    <header className="navbar">
-      <div className="nav-inner">
-        <Logo />
+//   return (
+//     <header className="navbar">
+//       <div className="nav-inner">
+//         <Logo />
 
-        <nav className={menuOpen ? "nav-links open" : "nav-links"}>
-          <a href="#about" onClick={() => setMenuOpen(false)}>
-            About us
-          </a>
-          <a href="#hospitals" onClick={() => setMenuOpen(false)}>
-            Find hospitals
-          </a>
-          <a href="#nurses" onClick={() => setMenuOpen(false)}>
-            Find nurses
-          </a>
-        </nav>
+//         <nav className={menuOpen ? "nav-links open" : "nav-links"}>
+//           <a href="#about" onClick={() => setMenuOpen(false)}>
+//             About us
+//           </a>
+//           <a href="#hospitals" onClick={() => setMenuOpen(false)}>
+//             Find hospitals
+//           </a>
+//           <a href="#nurses" onClick={() => setMenuOpen(false)}>
+//             Find nurses
+//           </a>
+//         </nav>
 
-        <div className="nav-actions">
-          <a href="#signup" className="signup-link hidden">
-            Sign up
-          </a>
-          <a href="#login" className="login-button">
-            Login
-          </a>
-        </div>
+//         <div className="nav-actions">
+//           <a href="#signup" className="signup-link hidden">
+//             Sign up
+//           </a>
+//           <a href="#login" className="login-button">
+//             Login
+//           </a>
+//         </div>
 
-        <button
-          className={menuOpen ? "hamburger active" : "hamburger"}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </div>
-    </header>
-  );
-}
+//         <button
+//           className={menuOpen ? "hamburger active" : "hamburger"}
+//           onClick={() => setMenuOpen(!menuOpen)}
+//           aria-label="Toggle menu"
+//         >
+//           <span />
+//           <span />
+//           <span />
+//         </button>
+//       </div>
+//     </header>
+//   );
+// }
 
 function About() {
   return (
@@ -209,97 +210,6 @@ function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer-decoration footer-plane">✈</div>
-
-      <div className="footer-inner">
-        <div className="footer-brand">
-          <Logo />
-
-          <p>
-            We connect talented healthcare professionals with hospitals looking
-            for their next great team member.
-          </p>
-
-          <p>
-            Making healthcare hiring
-            <br />
-            simpler, one connection at a time.
-          </p>
-        </div>
-
-        <div className="footer-column">
-          <h4>About CampusCare</h4>
-          <a href="#about">About us</a>
-          <a href="#terms">Terms of service</a>
-          <a href="#privacy">Privacy policy</a>
-          <a href="#faq">FAQ</a>
-          <a href="#conduct">Code of conduct</a>
-        </div>
-
-        <div className="footer-column">
-          <h4>For Hospitals</h4>
-          <a href="#post-job">Post a Job Opening</a>
-          <a href="#search-nurses">Search for nurses</a>
-
-          <h4 className="footer-subheading">For Nurses</h4>
-          <a href="#apply">How to apply</a>
-          <a href="#benefits">Benefits</a>
-          <a href="#jobs">Browse Jobs</a>
-          <a href="#conduct">Code of conduct</a>
-        </div>
-
-        <div className="footer-column contact-column">
-          <h4>Contact us</h4>
-
-          <a href="tel:3085550121">
-            <span className="contact-icon">⌕</span>
-            (308) 555-0121
-          </a>
-
-          <a href="mailto:thuhang.nute@gmail.com">
-            <span className="contact-icon">✉</span>
-            thuhang.nute@gmail.com
-          </a>
-
-          <a href="#location">
-            <span className="contact-icon">⌖</span>
-            3517 W. Gray St. Utica, 57867
-          </a>
-
-          <h4 className="social-title">Social platforms</h4>
-
-          <div className="socials">
-            <a href="#facebook" aria-label="Facebook">
-              f
-            </a>
-            <a href="#instagram" aria-label="Instagram">
-              ◎
-            </a>
-            <a href="#linkedin" aria-label="LinkedIn">
-              in
-            </a>
-            <a href="#pinterest" aria-label="Pinterest">
-              p
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        <span>© 2026 CampusCare. All rights reserved.</span>
-
-        <div className="footer-bottom-links">
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
-        </div>
-      </div>
-    </footer>
   );
 }
 

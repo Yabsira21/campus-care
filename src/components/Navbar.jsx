@@ -1,4 +1,8 @@
-function Navbar() {
+import { useState } from "react";
+import "./Navbar.css";
+import Logo from "./Logo";
+
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -19,9 +23,7 @@ function Navbar() {
         </nav>
 
         <div className="nav-actions">
-          <a href="#signup" className="signup-link hidden">
-            Sign up
-          </a>
+          <p className="signup-link hidden">Sign up</p>
           <a href="#login" className="login-button">
             Login
           </a>

@@ -1,0 +1,48 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #092044;
+  font-family: var(--heading-font);
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.9px;
+}
+
+.logo-mark {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 34px;
+}
+
+.logo-wing {
+  position: absolute;
+  border: 2px solid var(--pink);
+  border-radius: 100% 0 100% 0;
+  transform: rotate(30deg);
+}
+
+.logo-wing-one {
+  width: 17px;
+  height: 10px;
+  top: 8px;
+  left: 3px;
+}
+
+.logo-wing-two {
+  width: 18px;
+  height: 11px;
+  top: 13px;
+  left: 10px;
+  transform: rotate(-22deg);
+}
+
+.logo-wing-three {
+  width: 13px;
+  height: 10px;
+  top: 2px;
+  left: 10px;
+  transform: rotate(50deg);
+}
