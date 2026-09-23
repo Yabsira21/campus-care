@@ -1,4 +1,4 @@
-import "./Last.css";
+import "./Landing.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -41,19 +41,6 @@ const nurses = [
   },
 ];
 
-function Logo() {
-  return (
-    <a href="#home" className="logo">
-      <span className="logo-mark">
-        <span className="logo-wing logo-wing-one" />
-        <span className="logo-wing logo-wing-two" />
-        <span className="logo-wing logo-wing-three" />
-      </span>
-      CampusCare
-    </a>
-  );
-}
-
 function FloatingPerson({ person }) {
   return (
     <div className={`floating-person ${person.side}`}>
@@ -72,49 +59,6 @@ function FloatingPerson({ person }) {
     </div>
   );
 }
-
-// function Navbar() {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   return (
-//     <header className="navbar">
-//       <div className="nav-inner">
-//         <Logo />
-
-//         <nav className={menuOpen ? "nav-links open" : "nav-links"}>
-//           <a href="#about" onClick={() => setMenuOpen(false)}>
-//             About us
-//           </a>
-//           <a href="#hospitals" onClick={() => setMenuOpen(false)}>
-//             Find hospitals
-//           </a>
-//           <a href="#nurses" onClick={() => setMenuOpen(false)}>
-//             Find nurses
-//           </a>
-//         </nav>
-
-//         <div className="nav-actions">
-//           <a href="#signup" className="signup-link hidden">
-//             Sign up
-//           </a>
-//           <a href="#login" className="login-button">
-//             Login
-//           </a>
-//         </div>
-
-//         <button
-//           className={menuOpen ? "hamburger active" : "hamburger"}
-//           onClick={() => setMenuOpen(!menuOpen)}
-//           aria-label="Toggle menu"
-//         >
-//           <span />
-//           <span />
-//           <span />
-//         </button>
-//       </div>
-//     </header>
-//   );
-// }
 
 function About() {
   return (
@@ -213,16 +157,11 @@ function Hero() {
   );
 }
 
-export default function Last() {
+export default function Landing() {
   return (
-    <div className="tekkah-page">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-      </main>
-
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <About />
+    </>
   );
 }

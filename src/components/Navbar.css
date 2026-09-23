@@ -25,6 +25,7 @@
 }
 
 .nav-links a,
+.nav-links p,
 .signup-link {
   font-size: 15px;
   color: #22232b;
@@ -33,6 +34,7 @@
 }
 
 .nav-links a:hover,
+.nav-links p:hover,
 .signup-link:hover {
   color: var(--pink);
 }
