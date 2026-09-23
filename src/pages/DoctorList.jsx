@@ -20,7 +20,7 @@ export default function DoctorList() {
     async function load() {
       try {
         setLoading(true);
-        const res = await fetch("/src/data/data.json", {
+        const res = await fetch("/data.json", {
           // signal: ctrl.signal,
         });
         if (!res.ok) throw new Error("Could not load the menu");

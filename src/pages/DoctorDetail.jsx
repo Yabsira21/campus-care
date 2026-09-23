@@ -40,7 +40,7 @@ export default function DoctorDetail() {
         // console.log(hi);
 
         // const doctorData = doctors.find((d) => d.id == Number(id));
-        const res = await fetch("/src/data/data.json");
+        const res = await fetch("/data.json");
 
         if (!res.ok) {
           throw new Error("Failed to load doctors");
