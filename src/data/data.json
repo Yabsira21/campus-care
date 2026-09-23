@@ -1,6 +1,6 @@
 [
   {
-    "id": "d1",
+    "id": "1",
     "name": "Dr. Amara Bekele",
     "initials": "AB",
     "color": "#ee5586",
@@ -12,7 +12,7 @@
     "image": "https://i.pravatar.cc/300"
   },
   {
-    "id": "d2",
+    "id": "2",
     "name": "Dr. Samuel Tesfaye",
     "initials": "ST",
     "color": "#2fc7c0",
@@ -24,7 +24,7 @@
     "image": "https://i.pravatar.cc/300"
   },
   {
-    "id": "d3",
+    "id": "3",
     "name": "Dr. Hana Girma",
     "initials": "HG",
     "color": "#8c6fe6",
@@ -36,7 +36,7 @@
     "image": "https://i.pravatar.cc/300"
   },
   {
-    "id": "d4",
+    "id": "4",
     "name": "Dr. Yosef Alemu",
     "initials": "YA",
     "color": "#f2a154",
@@ -48,7 +48,7 @@
     "image": "https://i.pravatar.cc/300"
   },
   {
-    "id": "d5",
+    "id": "5",
     "name": "Dr. Selam Worku",
     "initials": "SW",
     "color": "#4fb0e8",

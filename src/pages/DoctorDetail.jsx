@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // import { doctors } from "../data/doctors";
 import "./DoctorDetail.css";
+import { useParams } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-// Presentational only
-// const doctor = doctors[0];
-
-const doctor = {};
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 const timeSlots = [
@@ -22,6 +21,57 @@ const timeSlots = [
 export default function DoctorDetail() {
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [error, setError] = useState(null);
+  const { id } = useParams();
+
+  const [doctor, setDoctor] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        //     const res = await fetch("/src/data/data.json");
+
+        // const doctors = await res.json();
+
+        // console.log(doctors, Number(id));
+
+        // const hi = doctors.filter((d) => d.id == 1);
+
+        // console.log(hi);
+
+        // const doctorData = doctors.find((d) => d.id == Number(id));
+        const res = await fetch("/src/data/data.json");
+
+        if (!res.ok) {
+          throw new Error("Failed to load doctors");
+        }
+
+        const doctors = await res.json();
+
+        console.log(doctors, Number(id));
+        const hi = doctors.filter((d) => d.id == Number(id));
+        console.log(hi[0]);
+
+        const doctorData = doctors.find((d) => d.id == Number(id));
+        // const doctorData = hi[0];
+        // console.log(doctorData);
+
+        if (!doctorData) {
+          setError("doctor-not-found");
+          return;
+        }
+
+        setDoctor(doctorData);
+      } catch (e) {
+        console.error(e);
+        setError("fetch-error");
+      }
+    }
+
+    setTimeout(() => {
+      load();
+    }, 3000);
+  }, [id]);
 
   const handleDayClick = (day) => {
     setSelectedDay((current) => (current === day ? null : day));
@@ -31,6 +81,49 @@ export default function DoctorDetail() {
     setSelectedTime((current) => (current === time ? null : time));
   };
 
+  if (!doctor && !error) {
+    return <DoctorDetailSkeleton />;
+  }
+
+  if (error === "doctor-not-found") {
+    return (
+      <section className="doctor-error">
+        <div className="doctor-error-card">
+          <div className="doctor-error-icon">🩺</div>
+
+          <h2>Doctor not found</h2>
+
+          <p>
+            We couldn't find the doctor you're looking for. They may have been
+            removed or the profile doesn't exist.
+          </p>
+
+          {/* <Link to="/doctorlist" className="btn btn-primary">
+            Back to doctors
+          </Link> */}
+        </div>
+      </section>
+    );
+  }
+
+  if (error === "fetch-error") {
+    return (
+      <section className="doctor-error">
+        <div className="doctor-error-card">
+          <div className="doctor-error-icon">⚠️</div>
+
+          <h2>Something went wrong</h2>
+
+          <p>We couldn't load this doctor's profile. Please try again later.</p>
+
+          <Link to="/doctorlist" className="btn btn-primary">
+            Back to doctors
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
       <section className="detail-hero">
@@ -38,10 +131,6 @@ export default function DoctorDetail() {
         <div className="detail-hero-decoration deco-square" />
 
         <div className="container">
-          <Link to="/doctors" className="back-link">
-            <span>←</span> Back to all doctors
-          </Link>
-
           <div className="detail-hero-row">
             <div className="detail-avatar" style={{ background: doctor.color }}>
               {doctor.initials}
@@ -58,14 +147,6 @@ export default function DoctorDetail() {
                 <span className="rating">★ {doctor.rating.toFixed(1)}</span>
 
                 <span className="pill-tag">{doctor.experience} experience</span>
-
-                {/* {doctor.status === "available" ? (
-                  <span className="badge-available">
-                    <i /> Available today
-                  </span>
-                ) : (
-                  <span className="badge-busy">Fully booked</span>
-                )} */}
               </div>
             </div>
           </div>
@@ -173,6 +254,130 @@ export default function DoctorDetail() {
             >
               Continue to booking
             </Link>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function DoctorDetailSkeleton() {
+  return (
+    <>
+      <section className="detail-hero">
+        <div className="detail-hero-decoration deco-circle" />
+        <div className="detail-hero-decoration deco-square" />
+
+        <div className="container">
+          <div className="detail-hero-row">
+            <Skeleton
+              width={96}
+              height={96}
+              borderRadius="30% 70% 70% 30% / 30% 30% 70% 70%"
+            />
+
+            <div className="detail-heading">
+              <Skeleton width={110} height={13} />
+
+              <div style={{ marginTop: "10px" }}>
+                <Skeleton width={230} height={35} />
+              </div>
+
+              <div style={{ marginTop: "8px" }}>
+                <Skeleton width={120} height={15} />
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginTop: "14px",
+                }}
+              >
+                <Skeleton width={70} height={25} borderRadius={20} />
+
+                <Skeleton width={110} height={25} borderRadius={20} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section detail-body">
+        <div className="container detail-layout">
+          {/* LEFT SIDE */}
+          <div className="detail-main">
+            <div className="detail-card">
+              <Skeleton width={60} height={20} />
+
+              <div style={{ marginTop: "15px" }}>
+                <Skeleton count={4} height={13} />
+              </div>
+            </div>
+
+            <div className="detail-card">
+              <Skeleton width={80} height={20} />
+
+              <div style={{ marginTop: "15px" }}>
+                <Skeleton width="90%" height={14} />
+
+                <div style={{ marginTop: "10px" }}>
+                  <Skeleton width="80%" height={14} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <aside className="booking-card">
+            <Skeleton width={180} height={20} />
+
+            <div style={{ marginTop: "8px" }}>
+              <Skeleton width={220} height={14} />
+            </div>
+
+            {/* Date label */}
+            <div style={{ marginTop: "22px" }}>
+              <Skeleton width={40} height={13} />
+            </div>
+
+            {/* Dates */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(5, 1fr)",
+                gap: "8px",
+                marginTop: "8px",
+              }}
+            >
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Skeleton key={i} height={38} borderRadius={9} />
+              ))}
+            </div>
+
+            {/* Time label */}
+            <div style={{ marginTop: "22px" }}>
+              <Skeleton width={40} height={13} />
+            </div>
+
+            {/* Time slots */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "9px",
+                marginTop: "8px",
+              }}
+            >
+              {Array.from({ length: 6 }).map((_, i) => (
+                <Skeleton key={i} height={38} borderRadius={8} />
+              ))}
+            </div>
+
+            {/* Continue button */}
+            <div style={{ marginTop: "20px" }}>
+              <Skeleton width="100%" height={48} borderRadius={8} />
+            </div>
           </aside>
         </div>
       </section>

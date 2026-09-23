@@ -24,6 +24,52 @@
   padding: 0 32px;
 }
 
+.doctor-error {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
+}
+
+.doctor-error-card {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  padding: 45px 35px;
+  /* background: var(--white); */
+  border-radius: 18px;
+  /* box-shadow: 0 10px 35px rgba(35, 37, 45, 0.07); */
+}
+
+.doctor-error-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--pink-light);
+  font-size: 28px;
+}
+
+.doctor-error-card h2 {
+  margin: 0 0 10px;
+  font-family: var(--heading-font);
+  font-size: 24px;
+  color: #272831;
+}
+
+.doctor-error-card p {
+  margin: 0 auto 25px;
+  max-width: 380px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 /* =========================================================
    HERO
 ========================================================= */
