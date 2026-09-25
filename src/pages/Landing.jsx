@@ -6,37 +6,37 @@ const nurses = [
   {
     name: "Ashley Johnson",
     role: "Travel Nurse",
-    image: "https://picsum.photos/seed/nurse1/180/180",
+    image: "/z.jpg",
     side: "left-top",
   },
   {
     name: "Diane Wilson",
     role: "Dream hospital",
-    image: "https://picsum.photos/seed/nurse2/180/180",
+    image: "b.jpg",
     side: "left-middle",
   },
   {
     name: "Jake Collins",
     role: "Care hospital",
-    image: "https://picsum.photos/seed/nurse3/180/180",
+    image: "a.jpg",
     side: "left-bottom",
   },
   {
     name: "Sarah Smith",
     role: "Travel Nurse",
-    image: "https://picsum.photos/seed/nurse4/180/180",
+    image: "d.jpg",
     side: "right-top",
   },
   {
     name: "Chris Adams",
     role: "Care hospital",
-    image: "https://picsum.photos/seed/nurse5/180/180",
+    image: "f.jpg",
     side: "right-middle",
   },
   {
     name: "Ryan Brown",
     role: "Care hospital",
-    image: "https://picsum.photos/seed/nurse6/180/180",
+    image: "h.jpg",
     side: "right-bottom",
   },
 ];
