@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RequireAuth from "./components/RequireAuth";
 import { useAuth } from "./store/auth";
+import Appointment from "./pages/Appointments";
+import NotFound from "./pages/NotFound";
 // import Last from "./components/Last";
 
 export default function App() {
@@ -20,6 +22,7 @@ export default function App() {
           <Route index path="/" element={<Landing />} />
           <Route path="/doctorlist" element={<DoctorList />} />
           <Route path="/doctor/:id" element={<DoctorDetail />} />
+          <Route path="/appointments" element={<Appointment />} />
         </Route>
         <Route
           path="/checkout"
@@ -30,6 +33,7 @@ export default function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer
         position="top-center"
