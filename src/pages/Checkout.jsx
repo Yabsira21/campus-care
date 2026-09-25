@@ -4,6 +4,7 @@ import confetti from "canvas-confetti";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAppointment } from "../store/appointment";
 
 function validate(form) {
   const errors = {};
@@ -34,6 +35,8 @@ function validate(form) {
 export default function Checkout() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const addItem = useAppointment((s) => s.addItem);
 
   const { doctor, selectedDay, selectedTime } = location.state || {};
 
@@ -103,6 +106,19 @@ export default function Checkout() {
         selectedTime,
         ...form,
       });
+
+      const appointment = {
+        id: crypto.randomUUID(),
+        doctor: doctor.name,
+        department: doctor.department,
+        date: selectedDay,
+        time: selectedTime,
+        status: "Upcoming",
+        reason: form.reason,
+        initials: doctor.initials,
+      };
+
+      addItem(appointment);
 
       confetti({
         particleCount: 150,

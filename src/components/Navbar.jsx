@@ -18,8 +18,8 @@ export default function Navbar() {
           {/* <a href="#about" onClick={() => setMenuOpen(false)}>
           
           </a> */}
-          <Link to={"/#about"}>
-            <p onClick={() => setMenuOpen(false)}>About us</p>
+          <Link to={"/Appointments"}>
+            <p onClick={() => setMenuOpen(false)}>Appointments</p>
           </Link>
           {/* <a href="#hospitals" onClick={() => setMenuOpen(false)}>
             Find Doctors
