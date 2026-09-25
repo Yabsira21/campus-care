@@ -13,7 +13,13 @@ export default function DoctorList() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const departments = ["a", "b"];
+  const departments = [
+    "Neurology",
+    "Dermatology",
+    "Pediatrics",
+    "Dental",
+    "Physiotherapy",
+  ];
 
   useEffect(() => {
     // const ctrl = new AbortController();

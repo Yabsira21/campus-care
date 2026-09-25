@@ -132,8 +132,20 @@ export default function DoctorDetail() {
 
         <div className="container">
           <div className="detail-hero-row">
-            <div className="detail-avatar" style={{ background: doctor.color }}>
+            {/* <div className="detail-avatar" style={{ background: doctor.color }}>
               {doctor.initials}
+            </div> */}
+            <div
+              className="doctor-photo"
+              style={{
+                background: doctor.color,
+                backgroundImage: doctor.image
+                  ? `url(${doctor.image})`
+                  : undefined,
+                backgroundSize: "cover",
+              }}
+            >
+              {!doctor.image && doctor.initials}
             </div>
 
             <div className="detail-heading">

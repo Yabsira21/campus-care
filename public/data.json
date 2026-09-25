@@ -4,12 +4,12 @@
     "name": "Dr. Amara Bekele",
     "initials": "AB",
     "color": "#ee5586",
-    "department": "a",
+    "department": "Neurology",
     "tags": ["Walk-in", "Day shift"],
     "experience": "6+ years",
     "rating": 4.9,
     "status": "available",
-    "image": "https://i.pravatar.cc/300"
+    "image": "/f.jpg"
   },
   {
     "id": "2",
@@ -21,31 +21,31 @@
     "experience": "4+ years",
     "rating": 4.7,
     "status": "available",
-    "image": "https://i.pravatar.cc/300"
+    "image": "/c.jpg"
   },
   {
     "id": "3",
     "name": "Dr. Hana Girma",
     "initials": "HG",
     "color": "#8c6fe6",
-    "department": "Mental Health",
+    "department": "Pediatrics",
     "tags": ["Telehealth", "Day shift"],
     "experience": "8+ years",
     "rating": 5.0,
     "status": "busy",
-    "image": "https://i.pravatar.cc/300"
+    "image": "/a.jpg"
   },
   {
     "id": "4",
     "name": "Dr. Yosef Alemu",
     "initials": "YA",
     "color": "#f2a154",
-    "department": "Dental Care",
+    "department": "Dental",
     "tags": ["Walk-in"],
     "experience": "3+ years",
     "rating": 4.6,
     "status": "available",
-    "image": "https://i.pravatar.cc/300"
+    "image": "/d.jpg"
   },
   {
     "id": "5",
@@ -57,6 +57,6 @@
     "experience": "5+ years",
     "rating": 4.8,
     "status": "busy",
-    "image": "https://i.pravatar.cc/300"
+    "image": "/e.jpg"
   }
 ]
