@@ -158,6 +158,7 @@ function Hero() {
 }
 
 export default function Landing() {
+  // throw new Error("hi");
   return (
     <>
       <Hero />

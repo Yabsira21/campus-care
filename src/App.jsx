@@ -12,35 +12,38 @@ import { useAuth } from "./store/auth";
 import Appointment from "./pages/Appointments";
 import NotFound from "./pages/NotFound";
 // import Last from "./components/Last";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 export default function App() {
   const isLoggedin = useAuth((s) => s.isLoggedIn);
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index path="/" element={<Landing />} />
-          <Route path="/doctorlist" element={<DoctorList />} />
-          <Route path="/doctor/:id" element={<DoctorDetail />} />
-          <Route path="/appointments" element={<Appointment />} />
-        </Route>
-        <Route
-          path="/checkout"
-          element={
-            <RequireAuth isLoggedIn={isLoggedin}>
-              <Checkout />
-            </RequireAuth>
-          }
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index path="/" element={<Landing />} />
+            <Route path="/doctorlist" element={<DoctorList />} />
+            <Route path="/doctor/:id" element={<DoctorDetail />} />
+            <Route path="/appointments" element={<Appointment />} />
+          </Route>
+          <Route
+            path="/checkout"
+            element={
+              <RequireAuth isLoggedIn={isLoggedin}>
+                <Checkout />
+              </RequireAuth>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <ToastContainer
+          position="top-center"
+          hideProgressBar
+          theme="dark"
+          // transition={Slide}
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <ToastContainer
-        position="top-center"
-        hideProgressBar
-        theme="dark"
-        // transition={Slide}
-      />
+      </ErrorBoundary>
     </>
   );
 }
