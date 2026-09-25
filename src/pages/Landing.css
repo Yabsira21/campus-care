@@ -506,6 +506,32 @@
    RESPONSIVE
 ========================================================= */
 
+@media (max-width: 1300px) {
+  .left-top {
+    left: 108px;
+  }
+
+  .right-top {
+    right: 108px;
+  }
+
+  .left-middle {
+    left: 48px;
+  }
+
+  .right-middle {
+    right: 48px;
+  }
+
+  .left-bottom {
+    left: 88px;
+  }
+
+  .right-bottom {
+    right: 88px;
+  }
+}
+
 @media (max-width: 1050px) {
   .floating-person {
     transform: scale(0.9);
